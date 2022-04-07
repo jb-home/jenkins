@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGENAME = "jenkins"
+    IMAGENAME = "jbhome/jenkins"
     DOCKER_ID = credentials('DOCKER_ID')
     DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
   }
@@ -18,15 +18,15 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx build -t $DOCKER_ID/$IMAGENAME .'
+        sh 'docker buildx build -t $IMAGENAME .'
       }
     }
     stage('Publish') {
       steps{
         sh "docker tag $IMAGENAME $IMAGENAME:latest"
         sh "docker tag $IMAGENAME $IMAGENAME:$JENKINS_VERSION"
-        sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $DOCKER_ID/$IMAGENAME:latest .'
-        sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $DOCKER_ID/$IMAGENAME:$JENKINS_VERSION .'
+        sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $IMAGENAME:latest .'
+        sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $IMAGENAME:$JENKINS_VERSION .'
       }
     }
     stage('Cleanup') {
