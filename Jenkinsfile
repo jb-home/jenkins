@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx build jbhome/jenkins:latest .'
+        sh 'docker buildx build $IMAGENAME:latest .'
       }
     }
     stage('Publish') {
