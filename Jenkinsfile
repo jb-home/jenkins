@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx build $IMAGENAME:latest .'
+        sh 'docker buildx build -t $IMAGENAME:latest .'
       }
     }
     stage('Publish') {
