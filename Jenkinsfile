@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx inspect --bootstrap'
+        sh 'docker buildx version'
         sh 'docker buildx build -t $IMAGENAME:latest .'
       }
     }
