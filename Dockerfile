@@ -1,7 +1,7 @@
 FROM --platform=$TARGETPLATFORM debian:bullseye-slim
 
 # User, home (app) and data folders
-ARG USER=jenkins
+ARG USER=jens
 ARG DATA=/data
 ENV HOME /usr/src/$USER
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-armhf
