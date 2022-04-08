@@ -18,13 +18,13 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx version'
-        sh 'docker buildx build -t $IMAGENAME:latest .'
+        sh 'docker buildx build -t $IMAGENAME .'
       }
     }
     stage('Publish') {
       steps{
-        sh "docker tag $IMAGENAME:latest $IMAGENAME:$JENKINS_VERSION"
+        sh "docker tag $IMAGENAME $IMAGENAME:latest"
+        sh "docker tag $IMAGENAME $IMAGENAME:$JENKINS_VERSION"
         sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $IMAGENAME:latest .'
         sh 'docker buildx build --push --platform linux/arm/v7,linux/arm64,linux/arm/v6,linux/amd64 -t $IMAGENAME:$JENKINS_VERSION .'
       }
