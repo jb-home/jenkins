@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     IMAGENAME = "jbhome/jenkins"
-    DOCKER_ID = credentials('DOCKER_ID')
+    DOCKER_ID = "jbhome"
     DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
   }
 
