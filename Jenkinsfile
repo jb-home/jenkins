@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGENAME = "jbhome/jenkins"
+    IMAGENAME = "jbhome/dind-jenkins"
     DOCKER_ID = "jbhome"
     DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
   }
