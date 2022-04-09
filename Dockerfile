@@ -14,7 +14,7 @@ ENV JENKINS_HOME $DATA
 ENV JENKINS_WEB_PORT 8080
 ENV JENKINS_SLAVE_PORT 50000
 
-RUN ps aux | grep -i apt
+USER root
 
 # Extra runtime packages
 RUN apt-get update && \
