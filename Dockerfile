@@ -15,7 +15,7 @@ ENV JENKINS_WEB_PORT 8080
 ENV JENKINS_SLAVE_PORT 50000
 
 # Extra runtime packages
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+RUN apt-get update && \
     apt-get install -y -qq --no-install-recommends \
       openjdk-11-jre-headless \
       git ssh wget time procps curl qemu-user-static
