@@ -5,6 +5,7 @@ pipeline {
     IMAGENAME = "jbhome/dind-jenkins"
     DOCKER_ID = "jbhome"
     DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    DOCKER_BUILDKIT = 1
   }
 
   stages {
