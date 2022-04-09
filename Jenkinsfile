@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx build --push --platform linux/arm/v7,linux/amd64 -t $IMAGENAME:latest .'
+        sh 'docker buildx build --push --platform linux/arm/v7 -t $IMAGENAME:latest .'
       }
     }
     stage('Publish') {
