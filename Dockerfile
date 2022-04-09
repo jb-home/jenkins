@@ -14,8 +14,6 @@ ENV JENKINS_HOME $DATA
 ENV JENKINS_WEB_PORT 8080
 ENV JENKINS_SLAVE_PORT 50000
 
-RUN lsof /var/lib/dpkg/lock-frontend
-
 # Extra runtime packages
 RUN apt-get update && \
     apt-get install -y -qq --no-install-recommends \
