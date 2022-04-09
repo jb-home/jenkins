@@ -1,7 +1,7 @@
-FROM --platform=$TARGETPLATFORM debian:bullseye-slim
+FROM --platform=$TARGETPLATFORM debian:bullseye-lite
 
 # User, home (app) and data folders
-ARG USER=jens
+ARG USER=jenkins
 ARG DATA=/data
 ENV HOME /usr/src/$USER
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-armhf
@@ -23,6 +23,8 @@ RUN apt-get update && \
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
     chmod +x /get-docker.sh && \
     sh get-docker.sh
+RUN systemctl enable docker.service && \
+    systemctl enable containerd.service
 RUN docker buildx create --use --name multiarch
 RUN docker buildx inspect --bootstrap
 
