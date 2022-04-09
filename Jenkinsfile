@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Build') {
       steps{
-        sh 'docker buildx build -t $IMAGENAME .'
+        sh 'docker buildx build --no-cache -t $IMAGENAME .'
       }
     }
     stage('Publish') {
