@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM debian:bullseye-lite
+FROM --platform=$TARGETPLATFORM debian:bullseye
 
 # User, home (app) and data folders
 ARG USER=jenkins
